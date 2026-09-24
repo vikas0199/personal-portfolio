@@ -10,7 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
        1. AOS
     ------------------------------------------------------------------ */
     if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 720, easing: 'ease-out-cubic', once: true, offset: 55 });
+        const isMobile = window.innerWidth <= 768;
+        AOS.init({
+            duration: isMobile ? 400 : 720,
+            easing:   'ease-out-cubic',
+            once:     true,
+            offset:   isMobile ? 20 : 55,
+            disable:  window.innerWidth <= 480 ? true : false
+        });
     }
 
     /* ------------------------------------------------------------------
